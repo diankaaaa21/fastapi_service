@@ -1,22 +1,22 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 
 from app.logger import logger
 from app.redis_client import close_redis, get_redis_client, init_redis
 from app.routers import data, health
 
-app = FastAPI()
 
-
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     await init_redis()
     logger.info("Starting application...")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
+    yield
     await close_redis()
     logger.info("Closing application...")
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.get("/ping_redis")
