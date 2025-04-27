@@ -10,11 +10,13 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup_event():
     await init_redis()
+    logger.info("Starting application...")
 
 
 @app.on_event("shutdown")
 async def shutdown_event():
     await close_redis()
+    logger.info("Closing application...")
 
 
 @app.get("/ping_redis")
