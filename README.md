@@ -14,7 +14,7 @@ Implemented features:
 ## Project Startup
 
 ```bash
-git clone (https://github.com/diankaaaa21/fastapi_service.git)
+git clone https://github.com/diankaaaa21/fastapi_service.git
 cd fastapi_service
 docker-compose up --build
 ```
