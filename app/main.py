@@ -21,7 +21,7 @@ async def shutdown_event():
 
 @app.get("/ping_redis")
 async def ping_redis():
-    redis = get_redis_client()
+    redis = await get_redis_client()
     pong = await redis.ping()
     return {"redis_ping": pong}
 
