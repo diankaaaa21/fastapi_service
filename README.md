@@ -15,6 +15,20 @@ Implemented features:
 
 ```bash
 git clone https://github.com/diankaaaa21/fastapi_service.git
+
 cd fastapi_service
+
 docker-compose up --build
+```
+
+## Running Tests
+This project uses pytest for testing.
+
+To run the tests locally:
+```bash
+cd fastapi_service
+
+pip install -r requirements.txt
+
+pytest -v
 ```
